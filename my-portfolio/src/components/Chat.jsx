@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react";
 
 const SYSTEM_PROMPT = `You are a helpful assistant for Grace Huang's personal portfolio website. 
 Answer questions about Grace based on the following information:
@@ -21,24 +21,37 @@ Answer questions about Grace based on the following information:
 Only answer questions about Grace. If asked something unrelated, politely redirect.
 Keep answers concise and friendly. Take on the speaking language of a recent college student.`
 
+const MODEL_NAME = "gemini-2.5-flash"; 
+
 export default function Chat() {
-    const [open, setOpen] = useState(false)
-    const [messages, setMessages] = useState([])
-    const [input, setInput] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState("");
+    const [loading, setLoading] = useState(false);
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        if (open) {
+            scrollToBottom();
+        }
+    }, [messages, open]);
 
     const sendMessage = async () => {
-        if (!input.trim() || loading) return
+        if (!input.trim() || loading) return;
 
-        const userMessage = { role: "user", content: input }
-        const updatedMessages = [...messages, userMessage]
-        setMessages(updatedMessages)
-        setInput("")
-        setLoading(true)
+        const userMessage = { role: "user", content: input };
+        const updatedMessages = [...messages, userMessage];
+        setMessages(updatedMessages);
+        setInput("");
+        setLoading(true);
 
         try {
             const response = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -50,21 +63,28 @@ export default function Chat() {
                         }))
                     })
                 }
-            )
+            );
 
-            const data = await response.json()
-            const text = data.candidates[0].content.parts[0].text
-            setMessages([...updatedMessages, { role: "assistant", content: text }])
+            const data = await response.json();
+
+            if (data.candidates && data.candidates[0]) {
+                const text = data.candidates[0].content.parts[0].text;
+                setMessages([...updatedMessages, { role: "assistant", content: text }]);
+            } else {
+                console.error("Gemini API Error:", data);
+                const apiError = data.error?.message || "I'm having trouble connecting right now.";
+                setMessages([...updatedMessages, { role: "assistant", content: `(Error: ${apiError})` }]);
+            }
         } catch (err) {
-            console.error(err)
-            setMessages([...updatedMessages, { role: "assistant", content: "sorry, something went wrong. please try again!" }])
+            console.error("Network or Script Error:", err);
+            setMessages([...updatedMessages, { role: "assistant", content: "Sorry, something went wrong. Please try again!" }]);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
     return (
-        <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end sm:bottom-6 sm:right-6">
+        <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end sm:bottom-6 sm:right-6 font-sans">
             {open && (
                 <div className="mb-4 flex w-[min(20rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl border border-stone-300 bg-[#F4F0EB] shadow-lg sm:w-80">
                     <div className="px-4 py-3 border-b border-stone-300">
@@ -96,6 +116,7 @@ export default function Chat() {
                                 </p>
                             </div>
                         )}
+                        <div ref={messagesEndRef} />
                     </div>
 
                     <div className="flex gap-2 p-3 border-t border-stone-300">
@@ -109,7 +130,8 @@ export default function Chat() {
                         />
                         <button
                             onClick={sendMessage}
-                            className="text-xs bg-stone-700 text-stone-100 px-3 py-2 rounded-lg hover:bg-stone-900 transition-colors"
+                            disabled={loading}
+                            className="cursor-pointer text-xs bg-[#333] text-stone-100 px-3 py-2 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                         >
                             send
                         </button>
@@ -117,12 +139,12 @@ export default function Chat() {
                 </div>
             )}
 
-        <button
-            onClick={() => setOpen(!open)}
-            className="w-12 h-12 bg-stone-700 text-stone-100 rounded-full flex items-center justify-center hover:bg-stone-900 transition-colors shadow-lg text-lg"
-        >
-            {open ? "×" : "💬"}
-        </button>
+            <button
+                onClick={() => setOpen(!open)}
+                className="cursor-pointer w-12 h-12 bg-[#333] text-stone-100 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg text-lg"
+            >
+                {open ? "×" : "💬"}
+            </button>
         </div>
-    )
+    );
 }

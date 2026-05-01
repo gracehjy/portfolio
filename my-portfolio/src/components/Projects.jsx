@@ -1,5 +1,6 @@
 import { projects } from "../data/content";
 import FadeIn from "./FadeIn";
+import { Tag, TagContainer } from "./Tag";
 
 export default function Projects() {
     return (
@@ -10,15 +11,20 @@ export default function Projects() {
             <div className="flex flex-col gap-16">
                 {projects.map((proj, i) => (
                     <FadeIn key={i} delay={i * 100}>
-                        <h3 className="font-bold text-sm">{proj.name}</h3>
+                        <h3 className="font-bold text-sm shrink-0">{proj.name}</h3>
+                        <TagContainer>
+                            {proj.tags?.map((tag, j) => (
+                                <Tag key={j} value={tag} />
+                            ))}
+                        </TagContainer>
                         <p className="text-sm text-stone-600 leading-relaxed mb-6">
                             {proj.description}
                         </p>
                         {proj.images?.length > 0 && (
-                            <div className={`flex flex-wrap gap-4 justify-center ${proj.images.length === 1 ? "" : "items-start"}`}>
+                            <div className={`grid justify-items-center gap-y-4 ${proj.images.length > 1 ? "grid-cols-1 xl:grid-cols-[repeat(2,minmax(0,28rem))] xl:justify-center xl:gap-x-4" : "grid-cols-1"}`}>
                                 {proj.images.map((src, j) => (
                                     <FadeIn key={j} delay={j * 150}>
-                                        <div className="relative group max-w-md">
+                                        <div className={`relative group w-full ${proj.images.length > 1 ? "max-w-md xl:max-w-none" : "max-w-md"}`}>
                                             <img src={src} alt={`${proj.name} screenshot ${j + 1}`} className="w-full rounded-sm"/>
                                             {proj.link && (
                                                 <a href={proj.link}

@@ -91,7 +91,7 @@ export default function Nav() {
             }}
             className={`fixed top-0 left-0 right-0 z-50 flex flex-wrap items-start justify-between gap-4 bg-[#F4F0EB]/80 px-5 py-5 backdrop-blur-sm transition-transform duration-700 sm:px-8 sm:py-6 lg:px-16 lg:py-8 xl:px-28 ${visible ? "translate-y-0" : "-translate-y-full"}`}
         >
-            <div className="font-bold text-2xl sm:text-xl">gh</div>
+            <div className="font-bold text-2xl">gh</div>
             <button
                 type="button"
                 onClick={handleMenuToggle}
