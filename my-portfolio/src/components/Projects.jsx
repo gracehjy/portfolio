@@ -18,11 +18,20 @@ export default function Projects() {
                             <div className={`flex flex-wrap gap-4 justify-center ${proj.images.length === 1 ? "" : "items-start"}`}>
                                 {proj.images.map((src, j) => (
                                     <FadeIn key={j} delay={j * 150}>
-                                        <img
-                                            src={src}
-                                            alt={`${proj.name} screenshot ${j + 1}`}
-                                            className="w-full max-w-md rounded-sm border border-stone-200"
-                                        />
+                                        <div className="relative group max-w-md">
+                                            <img src={src} alt={`${proj.name} screenshot ${j + 1}`} className="w-full rounded-sm"/>
+                                            {proj.link && (
+                                                <a href={proj.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="absolute inset-0 flex items-center justify-center rounded-sm bg-black/0 group-hover:bg-black/60 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                                                >
+                                                    <span className="text-white text-sm tracking-wide">
+                                                        visit repo
+                                                    </span>
+                                                </a>
+                                            )}
+                                        </div>  
                                     </FadeIn>
                                 ))}
                             </div>

@@ -44,6 +44,7 @@ export const projects = [
             "/screenshots/leftover_1.png",
             "/screenshots/leftover_2.png"
         ],
+        link: "https://github.com/johnpp4/cse5114_project",
     },
     {
         name: "ARCH ship (client project for ARCH design)",
@@ -52,6 +53,7 @@ export const projects = [
             "/screenshots/arch_1.png",
             "/screenshots/arch_2.png"
         ],
+        link: "https://github.com/cse4504-fl25-2-wustl/team-project-jeong-zhong-huang",
     },
     {
         name: "spotify dashboard & playlist generator",
@@ -59,6 +61,7 @@ export const projects = [
         images: [
             "/screenshots/spotify.png",
         ],
+        link: "https://github.com/gracehjy/spotify",
     },
     {
         name: "toast it!",
@@ -66,5 +69,6 @@ export const projects = [
         images: [
             "/screenshots/toast.png",
         ],
+        link: "https://github.com/jocelynliaoo/CSE4308-ToastIt",
     }
 ]
