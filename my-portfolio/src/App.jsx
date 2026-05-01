@@ -1,0 +1,27 @@
+import Nav from './components/Nav'
+import Hero from './components/Hero'
+import Experience from './components/Experience'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import Chat from './components/Chat'
+
+function App() {
+  return (
+    <>
+      <Nav/>
+      <div className="pt-24 sm:pt-28 lg:pt-36"></div>
+      <Hero/>
+      <hr className="mx-5 sm:mx-8 lg:mx-16 xl:mx-28 border-stone-300 mb-8" />
+      <Experience/>
+      <hr className="mx-5 sm:mx-8 lg:mx-16 xl:mx-28 border-stone-300 mb-8" />
+      <Projects/>
+      <hr className="mx-5 sm:mx-8 lg:mx-16 xl:mx-28 border-stone-300 mb-8" />
+      <Contact/>
+      <Chat/>
+      <Footer/>
+    </>
+  )
+}
+
+export default App
