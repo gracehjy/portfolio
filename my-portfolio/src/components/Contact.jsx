@@ -7,7 +7,7 @@ export default function Contact() {
                 <h2 className="font-bold text-xl mb-8">contact</h2>
             </FadeIn>
             <FadeIn>
-                <p className="mb-8 max-w-2xl text-sm leading-relaxed">have questions or just want to chat? feel free to reach out (also download my resume <a href="/pdfs/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">here</a>)!</p>
+                <p className="mb-8 text-sm leading-relaxed">have questions or just want to chat? feel free to reach out or use the ai chatbot in the bottom right corner (also take a look at my resume <a href="/pdfs/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">here</a>)!</p>
             </FadeIn>
             <FadeIn>
             <ul className="flex flex-wrap gap-x-10 gap-y-4 justify-center">

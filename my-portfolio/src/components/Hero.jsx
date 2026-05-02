@@ -52,8 +52,8 @@ export default function Hero() {
             <div className="w-full lg:w-1/2">
                 <h1 className="mb-4 text-2xl font-bold">hello, i'm grace!</h1>
                 <p className="mb-3 text-sm leading-relaxed">i build software systems and applications, with interests in design, machine learning, and full-stack development.</p>
-                <p className="mb-3 text-sm leading-relaxed">while you’re here, let me introduce myself as a person. i love spending time with friends and family, traveling and seeing the world, eating and trying new foods, and playing pickleball.</p>
-                <p className="mb-3 text-sm leading-relaxed">during my time at university, I was a performer for a traditional filipino dance called tinikling! this was one of my favorite memories of college, and where I met some of the coolest people in my life!</p>
+                <p className="mb-3 text-sm leading-relaxed">while you’re here, let me briefly introduce myself. i love spending time with friends and family, traveling and seeing the world, eating and trying new foods, and playing pickleball.</p>
+                <p className="mb-3 text-sm leading-relaxed">during my time at university, I was a performer for a traditional filipino dance called tinikling! this was one of my favorite memories of college, and where I met some really cool people :) </p>
                 <p className="mb-3 text-sm leading-relaxed">here's what i'm currently listening to, feel free to listen along as you learn more about me!</p>
                 <iframe
                     src="https://open.spotify.com/embed/track/4of0FMIHXxzAfvsKk3Ne76?utm_source=generator&theme=0"

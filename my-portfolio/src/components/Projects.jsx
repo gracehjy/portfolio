@@ -35,7 +35,7 @@ export default function Projects() {
                                                 <a href={proj.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="absolute inset-0 flex items-center justify-center rounded-sm bg-black/0 group-hover:bg-black/60 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                                                className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/0 group-hover:bg-black/60 transition-all duration-300 opacity-0 group-hover:opacity-100"
                                                 >
                                                     <span className="text-white text-sm tracking-wide">visit repo</span>
                                                 </a>
