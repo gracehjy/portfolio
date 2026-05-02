@@ -26,7 +26,7 @@ export default function Hero() {
     // display each photo one after another
     useEffect(() => {
         if(visible >= photos.length) return
-        const timer = setTimeout(() => setVisible(v => v + 1), 180)
+        const timer = setTimeout(() => setVisible(v => v + 1), 250)
         return () => clearTimeout(timer)
     }, [visible])
 
