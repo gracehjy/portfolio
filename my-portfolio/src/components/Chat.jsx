@@ -21,8 +21,6 @@ Answer questions about Grace based on the following information:
 Only answer questions about Grace. If asked something unrelated, politely redirect.
 Keep answers concise and friendly. Take on the speaking language of a recent college student.`
 
-const MODEL_NAME = "gemini-2.5-flash"; 
-
 export default function Chat() {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([]);
@@ -50,22 +48,19 @@ export default function Chat() {
         setInput("");
         setLoading(true);
 
-        // send post request to gemini model
+        // send post request to server to call the gemini api
         try {
-            const response = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-                        contents: updatedMessages.map(m => ({
-                            role: m.role === "assistant" ? "model" : "user",
-                            parts: [{ text: m.content }]
-                        }))
-                    })
-                }
-            );
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+                    messages: updatedMessages.map(m => ({
+                    role: m.role === "assistant" ? "model" : "user",
+                    parts: [{ text: m.content }]
+                    }))
+                })
+            });
 
             const data = await response.json();
 
