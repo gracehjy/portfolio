@@ -1,3 +1,4 @@
+// container for the tags
 export function TagContainer({ children }) {
     return (
         <div className="flex flex-nowrap gap-2.5 py-2.5 w-full box-border flex-wrap sm:flex-nowrap">
@@ -6,7 +7,7 @@ export function TagContainer({ children }) {
     )
 }
 
-
+// what each tag should look like
 export function Tag ({ value }) {
     return (
         <>

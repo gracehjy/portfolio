@@ -30,6 +30,7 @@ export default function Chat() {
     const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef(null)
 
+    // automatically scroll to recent messages
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -49,6 +50,7 @@ export default function Chat() {
         setInput("");
         setLoading(true);
 
+        // send post request to gemini model
         try {
             const response = await fetch(
                 `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
@@ -86,7 +88,7 @@ export default function Chat() {
     return (
         <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end sm:bottom-6 sm:right-6 font-sans">
             {open && (
-                <div className="mb-4 flex w-[min(20rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl border border-stone-300 bg-[#F4F0EB] shadow-lg sm:w-80">
+                <div className="opacity-95 mb-4 flex w-[min(20rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl border border-stone-300 bg-[#F4F0EB] shadow-lg sm:w-80">
                     <div className="px-4 py-3 border-b border-stone-300">
                         <p className="text-sm font-bold">ask me anything</p>
                         <p className="text-xs text-stone-400">about grace</p>
@@ -98,6 +100,7 @@ export default function Chat() {
                                 ask me about grace's experience, projects, or background!
                             </p>
                         )}
+                        {/* style for user vs model messages */}
                         {messages.map((msg, i) => (
                             <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                                 <p className={`text-xs px-3 py-2 rounded-xl max-w-[85%] leading-relaxed ${
@@ -109,6 +112,7 @@ export default function Chat() {
                                 </p>
                             </div>
                         ))}
+                        {/* loading state */}
                         {loading && (
                             <div className="flex justify-start">
                                 <p className="text-xs px-3 py-2 rounded-xl bg-stone-200 text-stone-400">
@@ -118,7 +122,7 @@ export default function Chat() {
                         )}
                         <div ref={messagesEndRef} />
                     </div>
-
+                    {/* input box and send button */}
                     <div className="flex gap-2 p-3 border-t border-stone-300">
                         <input
                             type="text"
@@ -138,7 +142,7 @@ export default function Chat() {
                     </div>
                 </div>
             )}
-
+            {/* chat box button */}
             <button
                 onClick={() => setOpen(!open)}
                 className="cursor-pointer w-12 h-12 bg-[#333] text-stone-100 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg text-lg"

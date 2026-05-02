@@ -17,6 +17,7 @@ export default function ExperienceCard({ exp }) {
                         {exp.location} | {exp.date}
                     </p>
                 </div>
+                {/* buttons to expand card if there are details */}
                 {exp.details && (
                     <button
                         className="mt-1 shrink-0 cursor-pointer text-lg leading-none text-stone-500 transition-all duration-300 hover:text-stone-900"
@@ -27,6 +28,7 @@ export default function ExperienceCard({ exp }) {
                 )}
             </div>
 
+            {/* expand to show details */}
             <div
                 ref={contentRef}
                 className="overflow-hidden transition-all duration-400 ease-in-out"

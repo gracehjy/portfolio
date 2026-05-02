@@ -7,6 +7,7 @@ export default function Nav() {
     const timer = useRef(null)
     const hovering = useRef(false)
 
+    // 2 second timer for nav menu
     const startHideTimer = () => {
         if (timer.current) clearTimeout(timer.current)
         timer.current = setTimeout(() => {
@@ -14,6 +15,8 @@ export default function Nav() {
         }, 2000)
     }
 
+    // show nav when users haven't scrolled from the top or if they scroll up
+    // hide nav when users scroll down
     useEffect(() => {
         const handleScroll = () => {
             if (menuOpen) {
@@ -48,6 +51,7 @@ export default function Nav() {
         }
     }, [menuOpen])
 
+    // don't show hamburger menu when screen is large
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 640) {
@@ -59,6 +63,7 @@ export default function Nav() {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
+    // open the menu when toggled
     const handleMenuToggle = () => {
         if (menuOpen) {
             setMenuOpen(false)
@@ -73,11 +78,13 @@ export default function Nav() {
         setMenuOpen(true)
     }
 
+    // when link gets clicked, hide the menu
     const handleLinkClick = () => {
         setMenuOpen(false)
     }
 
     return (
+        // show nav if mouse is hovering over it
         <nav
             onMouseEnter={() => {
                 hovering.current = true
@@ -92,6 +99,8 @@ export default function Nav() {
             className={`fixed top-0 left-0 right-0 z-50 flex flex-wrap items-start justify-between gap-4 bg-[#F4F0EB]/80 px-5 py-5 backdrop-blur-sm transition-transform duration-700 sm:px-8 sm:py-6 lg:px-16 lg:py-8 xl:px-28 ${visible ? "translate-y-0" : "-translate-y-full"}`}
         >
             <div className="font-bold text-2xl">gh</div>
+
+            {/* hamburger menu */}
             <button
                 type="button"
                 onClick={handleMenuToggle}
@@ -100,6 +109,7 @@ export default function Nav() {
                 aria-expanded={menuOpen}
                 aria-controls="mobile-nav-menu"
             >
+                {/* horizontal lines to x transition */}
                 <span className="relative block h-4 w-5">
                     <span
                         className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition-all duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`}
@@ -112,12 +122,14 @@ export default function Nav() {
                     />
                 </span>
             </button>
+            {/* nav links */}
             <ul className="hidden flex-col items-end gap-1 text-right sm:flex">
                 <li><a href="#about" className="text-sm transition-opacity hover:opacity-60">about</a></li>
                 <li><a href="#experience" className="text-sm transition-opacity hover:opacity-60">experience</a></li>
                 <li><a href="#projects" className="text-sm transition-opacity hover:opacity-60">projects</a></li>
                 <li><a href="#contact" className="text-sm transition-opacity hover:opacity-60">contact</a></li>
             </ul>
+            {/* nav links on mobile */}
             <div
                 id="mobile-nav-menu"
                 className={`basis-full overflow-hidden transition-all duration-300 sm:hidden ${menuOpen ? "max-h-48 opacity-100" : "pointer-events-none max-h-0 opacity-0"}`}

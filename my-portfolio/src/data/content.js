@@ -1,3 +1,4 @@
+// info on each experience
 export const experiences = [
     {
         company: "mastercard",
@@ -36,6 +37,8 @@ export const experiences = [
     }
 
 ]
+
+// info on each project
 export const projects = [
     {
         name: "leftover to makeover (recipe recommendation app)",
