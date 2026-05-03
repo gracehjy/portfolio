@@ -15,6 +15,9 @@ Answer questions about Grace based on the following information:
 - She has interests in design, machine learning, and full-stack development
 - She loves traveling, trying new foods, spending time with friends and family, and playing pickleball
 - She was a performer for a traditional Filipino dance called Tinikling in college
+- She also enjoys watching movies and tv shows with "How To Make Millions Before Grandma Dies" being her favorite movie.
+- Her favorite musical artists include Grent Perez, Ariana Grande, and Niki.
+- Her favorie games include Mario Kart, Overcooked, Catan, and Word Hunt (from Game Pigeon).
 - Projects: Leftover to Makeover (recipe recommendation app), ARCH Ship (art packing calculator), Spotify Dashboard & Playlist Generator, Toast It!
 - Contact: linkedin.com/in/gracehjy, github.com/gracehjy, grace.h@wustl.edu
 
