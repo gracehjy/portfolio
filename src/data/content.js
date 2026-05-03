@@ -101,3 +101,32 @@ export const projects = [
         ]
     }
 ]
+
+export const about_categories = [
+  {
+    label: "movies and shows",
+    items: [
+      { title: "how to make millions before grandma dies", image: "/favs/make_millions.jpg", link: "https://www.imdb.com/title/tt31392609/" },
+      { title: "twinkling watermelon", image: "/favs/twinkling_watermelon.jpg", link: "https://www.imdb.com/title/tt27446493/" },
+      { title: "shine on me", image: "/favs/shine_on_me.jpg", link: "https://www.imdb.com/title/tt34852924/" },
+      { title: "high school musical 3", image: "/favs/hsm.jpg", link: "https://www.imdb.com/title/tt0962726/" },
+    ]
+  },
+  {
+    label: "artists",
+    items: [
+      { title: "grent perez", image: "/favs/grent.png", link: "https://open.spotify.com/artist/73BLwSX6gsNeVzS7DgI4xe?si=0UvL99A1S-C_Is0ryecQvw" },
+      { title: "ariana grande", image: "/favs/ariana.png", link: "https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR?si=4gfwtlEIRHWmRAVwGF--6g"},
+      { title: "niki", image: "/favs/niki.jpeg", link: "https://open.spotify.com/artist/2kxP07DLgs4xlWz8YHlvfh?si=tXU-z8AtS_qREN5xfR7aHw" },
+    ]
+  },
+  {
+    label: "games",
+    items: [
+        { title: "mario kart", image: "/favs/mario.jpg", link: "https://mariokart8.nintendo.com/"},
+        { title: "catan", image: "/favs/catan.jpg", link: "https://www.catan.com/"},
+        { title: "overcooked", image: "/favs/overcooked.jpg", link: "https://store.steampowered.com/app/448510/Overcooked/"},
+        { title: "wordhunt (game pigeon)", image: "/favs/wordhunt.jpg", link: "https://apps.apple.com/jm/app/gamepigeon/id1124197642"}
+    ]
+  }
+]
