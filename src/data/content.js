@@ -118,6 +118,7 @@ export const about_categories = [
       { title: "grent perez", image: "/favs/grent.png", link: "https://open.spotify.com/artist/73BLwSX6gsNeVzS7DgI4xe?si=0UvL99A1S-C_Is0ryecQvw" },
       { title: "ariana grande", image: "/favs/ariana.png", link: "https://open.spotify.com/artist/66CXWjxzNUsdJxJ2JdwvnR?si=4gfwtlEIRHWmRAVwGF--6g"},
       { title: "niki", image: "/favs/niki.jpeg", link: "https://open.spotify.com/artist/2kxP07DLgs4xlWz8YHlvfh?si=tXU-z8AtS_qREN5xfR7aHw" },
+      { title: "justin bieber", image: "/favs/justin.png", link: "https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?si=5Dy7tHLyTlWz-s6UXOfKeA"}
     ]
   },
   {
